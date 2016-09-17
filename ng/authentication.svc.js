@@ -25,12 +25,15 @@ angular.module('app')
   vm.currentUser = function(){
     if(vm.isLoggedIn()){
       var token = vm.getToken();
+      console.log(token);
       var payload = token.split('.')[1];
       payload = $window.atob(payload);
+      payload = decodeURIComponent(escape(payload)); //Fixes UTF-8 Encoding Issues
       payload = JSON.parse(payload);
       return {
         email : payload.email,
-        name : payload.name
+        name : payload.name,
+        payload: payload
       };
     }
   }
