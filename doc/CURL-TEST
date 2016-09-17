@@ -1,0 +1,5 @@
+//Register CURL
+curl -X POST -d '{"name": "bruno", "password": "pass", "email": "gameover_sxt_nah@hotmail.com"}' -H "Content-Type: application/json" localhost:3000/api/register
+
+//Login CURL
+curl -X POST -d '{"name": "bruno", "password": "pass", "email": "gameover_sxt_nah@hotmail.com"}' -H "Content-Type: application/json" localhost:3000/api/login
