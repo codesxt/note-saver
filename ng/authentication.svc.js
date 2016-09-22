@@ -3,13 +3,13 @@ angular.module('app')
   var vm = this;
 	vm.saveToken = function(token){
     $window.localStorage['mean-token'] = token;
-  }
+  };
   vm.getToken = function(){
     return $window.localStorage['mean-token'];
-  }
+  };
   vm.logout = function() {
     $window.localStorage.removeItem('mean-token');
-  }
+  };
   vm.isLoggedIn = function(){
     var token = vm.getToken();
     var payload;
@@ -21,11 +21,10 @@ angular.module('app')
     } else {
       return false;
     }
-  }
+  };
   vm.currentUser = function(){
     if(vm.isLoggedIn()){
       var token = vm.getToken();
-      console.log(token);
       var payload = token.split('.')[1];
       payload = $window.atob(payload);
       payload = decodeURIComponent(escape(payload)); //Fixes UTF-8 Encoding Issues
@@ -36,7 +35,7 @@ angular.module('app')
         payload: payload
       };
     }
-  }
+  };
   vm.register = function(user) {
     return $http.post('/api/register', user).success(function(data){
       vm.saveToken(data.token);
@@ -47,4 +46,4 @@ angular.module('app')
       vm.saveToken(data.token);
     });
   };
-})
+});

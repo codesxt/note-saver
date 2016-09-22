@@ -6,5 +6,5 @@ angular.module('app')
   vm.logout = function(){
     AuthenticationSvc.logout();
     $location.path('/');
-  }
-})
+  };
+});
